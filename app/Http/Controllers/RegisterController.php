@@ -125,5 +125,7 @@ class RegisterController extends Controller
         $balance = Session::get('balance');
         $user->coin = $balance - $user->register_payment;
         $user->save();
+
+        return redirect()->route('login')->with('success', 'Account has been registered!');
     }
 }

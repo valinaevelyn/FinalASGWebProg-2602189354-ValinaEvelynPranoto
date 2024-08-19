@@ -145,6 +145,11 @@
                 
                     <button type="submit" class="btn btn-primary">Register</button>
             </form>
+
+            <div class="d-flex justify-content-center">
+                <a href="{{ route('login') }}" class="text-center text-decoration-none">Already have account? Login Here</a>
+            </div>
+
             </div>
         </div>
     </div>
