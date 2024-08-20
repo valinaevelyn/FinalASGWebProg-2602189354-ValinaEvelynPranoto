@@ -37,25 +37,7 @@ class FriendController extends Controller
                 'users.hobby as hobby'
             ])->get();
 
-        $new_friend = Friend::where('status', 1)
-            ->where(function ($query) {
-                $query->where('sender_id', auth()->user()->id)
-                    ->orWhere('receiver_id', auth()->user()->id);
-            })
-            ->join('users', function ($join) {
-                $join->on('users.id', '=', 'friends.sender_id')
-                    ->orOn('users.id', '=', 'friends.receiver_id');
-            })
-            ->where('users.id', '!=', auth()->user()->id)
-            ->select([
-                'friends.id as id',
-                'users.name as name',
-                'users.image as image',
-                'users.hobby as hobby'
-            ])
-            ->get();
-
-        return view('myfriends', compact('friend_requested', 'friend_accepted', 'new_friend'));
+        return view('myfriends', compact('friend_requested', 'friend_accepted'));
     }
 
     /**
