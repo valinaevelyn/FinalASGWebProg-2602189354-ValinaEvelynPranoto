@@ -17,6 +17,8 @@ Route::post('/', [LoginController::class, 'authenticate'])->name('authenticate')
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home/filter/{gender}', [HomeController::class, 'filter_gender'])->name('filter_gender');
+Route::post('/home/search', [HomeController::class, 'search'])->name('search');
 
 Route::middleware('auth')->group(function () {
     Route::resource('/friend', FriendController::class);
