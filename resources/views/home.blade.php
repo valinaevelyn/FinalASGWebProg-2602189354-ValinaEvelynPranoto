@@ -8,6 +8,7 @@
 
             @include('partials.success')
                 @include('partials.error')
+                @include('partials.notification')
 
             <div class="col mt-3">
                 <div class="row">
@@ -59,6 +60,9 @@
                     @endforelse
                 </div>
             </div>
+            
         </div>
+
     </div>
+    
 @endsection

@@ -10,7 +10,18 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $friend_accepted = Friend::join('users', 'friends.sender_id', '=', 'users.id')
+            ->where('friends.receiver_id', '=', auth()->user()->id)
+            ->where('friends.status', 0)
+            ->exists();
+
+        $notification = $friend_accepted ? 'You have new friend requests' : null;
+
         $user = User::where('id', '!=', auth()->user()->id)->get();
+
+        if ($notification) {
+            session()->flash('notification', $notification);
+        }
 
         return view('home', compact('user'));
     }
@@ -28,4 +39,6 @@ class HomeController extends Controller
 
         return view('home', compact('user'));
     }
+
+
 }

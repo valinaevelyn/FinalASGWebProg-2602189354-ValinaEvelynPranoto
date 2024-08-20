@@ -1,0 +1,45 @@
+@extends('layouts.main')
+
+@section('title', 'Profile')
+@section('content')
+<div class="container">
+    <div class="col">
+        <h1 class="text-center">My Profile</h1>
+
+        <div class="row mt-5 mb-5">
+            <div class="col d-flex justify-content-center align-items-center">
+                <img src="{{ asset('/storage/profile_image/' . $user->image) }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
+            </div>
+            <div class="col d-flex align-items-center">
+                <div class="col">
+                    <h2>{{ $user->name }}</h2>
+                    <div class="mt-3">
+                        <p>Hobby: {{ $user->hobby }}</p>
+                        <p>Gender: {{ $user->gender }}</p>
+                        <p>Phone Number: {{ $user->phone_number }}</p>
+                        <p>Instagram: {{ $user->instagram }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col mt-3">
+            <h2>Wallet</h2>
+            <p class="fs-5 text-center">My Wallet: {{ $user->coin }}</p>
+            <div class="d-flex justify-content-center">
+                <form action="{{ route('topup') }}" method="POST" enctype="multipart/form-data">
+                    @method('PUT')
+                    @csrf
+                    <button type="submit" class="btn btn-primary" style="width: 10rem">Top Up</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col mt-4">
+            <h2>Buy Avatars</h2>
+            
+        </div>
+
+    </div>
+</div>
+@endsection
