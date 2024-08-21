@@ -22,7 +22,7 @@ return new class extends Migration {
             $table->string('phone_number');
             $table->string('image');
             $table->integer('register_payment')->default(0);
-            $table->integer('coin')->default(0);
+            $table->integer('coin')->default(100);
             $table->rememberToken();
             $table->timestamps();
         });

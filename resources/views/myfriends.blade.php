@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Home')
+@section('title', 'Manage Friends')
 
 @section('content')
 <div class="container mt-4 d-flex justify-content-center">

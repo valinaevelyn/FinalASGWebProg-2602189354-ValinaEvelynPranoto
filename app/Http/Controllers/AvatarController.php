@@ -12,7 +12,7 @@ class AvatarController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**

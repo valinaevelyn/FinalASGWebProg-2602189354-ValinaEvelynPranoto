@@ -115,6 +115,8 @@ class RegisterController extends Controller
                 $overpaid = $balance - $payment;
                 Session::put('balance', $balance);
                 return redirect()->back()->with('overpaid', "Sorry you overpaid " . $overpaid . " , would you like to enter a balance?");
+            } else {
+                return redirect()->route('login')->with('success', 'Account has been registered!');
             }
         }
     }

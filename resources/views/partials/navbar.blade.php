@@ -17,8 +17,14 @@
             <a class="nav-link" href="{{ route('profile') }}">Profile</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">Buy Avatar</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Avatar
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{{ route('transaction.index') }}">Buy Avatar</a></li>
+              <li><a class="dropdown-item" href="{{ route('myavatar') }}">My Avatar</a></li>
+            </ul>
           </li>
 
           <li class="nav-item dropdown">
