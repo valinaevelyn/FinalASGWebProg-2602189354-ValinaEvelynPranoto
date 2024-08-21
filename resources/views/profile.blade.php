@@ -8,10 +8,14 @@
 
         <div class="row mt-5 mb-5">
             <div class="col d-flex justify-content-center align-items-center">
-                @if($user->is_avatar == true)
-                    <img src="{{ asset($user->image) }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
+                @if($user->is_visible)
+                    @if($user->is_avatar == true)
+                        <img src="{{ asset($user->image) }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
+                    @else
+                        <img src="{{ asset('/storage/profile_image/' . $user->image) }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
+                    @endif
                 @else
-                    <img src="{{ asset('/storage/profile_image/' . $user->image) }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
+                <img src="{{ asset('bear/' . mt_rand(1, 3) . '.jpg') }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
                 @endif
             </div>
             <div class="col d-flex align-items-center">
@@ -22,6 +26,21 @@
                         <p>Gender: {{ $user->gender }}</p>
                         <p>Phone Number: {{ $user->phone_number }}</p>
                         <p>Instagram: {{ $user->instagram }}</p>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-center mt-3">
+                        <form action="{{ route('visibility') }}" method="POST">
+                            @csrf
+                            @if($user->is_visible)
+                                <p>Your Visibility : <b>VISIBLE</b></p>
+                                <input type="hidden" name="is_visible" value="1">
+                                <button type="submit" class="btn btn-warning">Hide My Profile (-50)</button>
+                            @else
+                                <p>Your Visibility : <b>HIDDEN</b></p>
+                                <input type="hidden" name="is_visible" value="0">
+                                <button type="submit" class="btn btn-warning">Show My Profile (-5)</button>
+                            @endif
+                        </form>
                     </div>
                 </div>
             </div>
@@ -34,7 +53,7 @@
                 <form action="{{ route('topup') }}" method="POST" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
-                    <button type="submit" class="btn btn-primary" style="width: 10rem">Top Up</button>
+                    <button type="submit" class="btn btn-primary" style="width: 10rem">Top Up +100</button>
                 </form>
             </div>
         </div>

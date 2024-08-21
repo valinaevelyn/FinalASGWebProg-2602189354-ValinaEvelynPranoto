@@ -24,6 +24,7 @@ return new class extends Migration {
             $table->integer('register_payment')->default(0);
             $table->integer('coin')->default(100);
             $table->boolean('is_avatar')->default(false);
+            $table->boolean('is_visible')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });

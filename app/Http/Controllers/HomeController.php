@@ -17,7 +17,9 @@ class HomeController extends Controller
 
         $notification = $friend_accepted ? 'You have new friend requests' : null;
 
-        $user = User::where('id', '!=', auth()->user()->id)->get();
+        $user = User::where('id', '!=', auth()->user()->id)
+            ->where('users.is_visible', 1)
+            ->get();
 
         if ($notification) {
             session()->flash('notification', $notification);

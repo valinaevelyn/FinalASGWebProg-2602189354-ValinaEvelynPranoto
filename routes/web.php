@@ -27,6 +27,7 @@ Route::post('/home/search', [HomeController::class, 'search'])->name('search');
 Route::middleware('auth')->group(function () {
     Route::resource('/friend', FriendController::class);
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::post('/profile/visibility', [ProfileController::class, 'visibility'])->name('visibility');
     Route::put('/topup', [ProfileController::class, 'topup'])->name('topup');
     Route::resource('/transaction', TransactionController::class);
     Route::get('/myavatar', [TransactionController::class, 'myavatar'])->name('myavatar');

@@ -41,4 +41,32 @@ class ProfileController extends Controller
 
         return redirect()->back();
     }
+
+    public function visibility(Request $request)
+    {
+        $visibility = $request->input('is_visible');
+        $user = User::findOrFail(auth()->user()->id);
+
+        if ($visibility == 1) {
+            if ($user->coin < 50) {
+                return redirect()->back()->with('error', 'Your Balance is not enough to hide!');
+            } else {
+                $user->coin -= 50;
+                $user->is_visible = false;
+                $user->save();
+
+                return redirect()->back()->with('success', 'Your profile now hidden!');
+            }
+        } else if ($visibility == 0) {
+            if ($user->coin < 5) {
+                return redirect()->back()->with('error', 'Your Balance is not enough to show!');
+            } else {
+                $user->coin -= 5;
+                $user->is_visible = true;
+                $user->save();
+
+                return redirect()->back()->with('success', 'Your profile is back now!');
+            }
+        }
+    }
 }
