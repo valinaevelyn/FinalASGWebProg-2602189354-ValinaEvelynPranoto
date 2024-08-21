@@ -36,21 +36,26 @@ class TransactionController extends Controller
         $avatar = Avatar::findOrFail($avatar_id);
         $user = User::findOrFail(auth()->user()->id);
 
+        $transaction_already = Transaction::where('transactions.avatar_id', $avatar_id)
+            ->where('transactions.user_id', auth()->user()->id)->exists();
 
-        if ($user->coin < $avatar->price) {
-            return redirect()->back()->with('error', 'Your Balance is not enough to buy!');
+        if ($transaction_already) {
+            return redirect()->back()->with('error', 'Avatar is already bought!');
         } else {
-            $user->coin -= $avatar->price;
-            $user->save();
+            if ($user->coin < $avatar->price) {
+                return redirect()->back()->with('error', 'Your Balance is not enough to buy!');
+            } else {
+                $user->coin -= $avatar->price;
+                $user->save();
 
-            Transaction::create([
-                'avatar_id' => $avatar_id,
-                'user_id' => $user->id
-            ]);
+                Transaction::create([
+                    'avatar_id' => $avatar_id,
+                    'user_id' => $user->id
+                ]);
 
-            return redirect()->back()->with('success', 'Your transaction is success!');
+                return redirect()->back()->with('success', 'Your transaction is success!');
+            }
         }
-
 
     }
 
