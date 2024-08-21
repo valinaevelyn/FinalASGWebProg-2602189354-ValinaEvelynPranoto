@@ -23,6 +23,7 @@ return new class extends Migration {
             $table->string('image');
             $table->integer('register_payment')->default(0);
             $table->integer('coin')->default(100);
+            $table->boolean('is_avatar')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

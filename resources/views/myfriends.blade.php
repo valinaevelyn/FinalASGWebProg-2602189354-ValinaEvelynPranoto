@@ -11,7 +11,11 @@
                 <div class="row">
                     @forelse($friend_requested as $fr)
                     <div class="card m-3" style="width: 18rem;">
-                        <img src="{{ asset('/storage/profile_image/' . $fr->image) }}" class="card-img-top" alt="..." style="object-fit: contain">
+                      @if($fr->is_avatar == true)
+                      <img src="{{ asset($fr->image) }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
+                      @else
+                      <img src="{{ asset('/storage/profile_image/' . $fr->image) }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
+                      @endif
                         <div class="card-body">
                           <h5 class="card-title">{{ $fr->name }}</h5>
                           <p class="card-text">Hobbies: {{ $fr->hobby }}</p>
@@ -36,7 +40,11 @@
                 <div class="row">
                     @forelse($friend_accepted as $fa)
                     <div class="card m-3" style="width: 18rem;">
-                        <img src="{{ asset('/storage/profile_image/' . $fa->image) }}" class="card-img-top" alt="..." style="object-fit: contain">
+                      @if($fa->is_avatar == true)
+                      <img src="{{ asset($fa->image) }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
+                      @else
+                      <img src="{{ asset('/storage/profile_image/' . $fa->image) }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
+                      @endif
                         <div class="card-body">
                           <h5 class="card-title">{{ $fa->name }}</h5>
                           <p class="card-text">Hobbies: {{ $fa->hobby }}</p>

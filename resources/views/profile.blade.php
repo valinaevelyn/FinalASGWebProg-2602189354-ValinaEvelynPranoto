@@ -8,7 +8,11 @@
 
         <div class="row mt-5 mb-5">
             <div class="col d-flex justify-content-center align-items-center">
-                <img src="{{ asset('/storage/profile_image/' . $user->image) }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
+                @if($user->is_avatar == true)
+                    <img src="{{ asset($user->image) }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
+                @else
+                    <img src="{{ asset('/storage/profile_image/' . $user->image) }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
+                @endif
             </div>
             <div class="col d-flex align-items-center">
                 <div class="col">

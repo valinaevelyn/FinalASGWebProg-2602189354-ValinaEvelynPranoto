@@ -16,9 +16,10 @@
                           <h5 class="card-title">{{ $a->name }}</h5>
 
                           <div class=" d-flex justify-content-end">
-                            <form action="{{ route('transaction.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('useavatar', $a->id) }}" method="POST" enctype="multipart/form-data">
+                                @method('PUT')
                                 @csrf
-                                  <input type="hidden" id="avatar_id" name="avatar_id" value="{{ $a->id }}">
+                                  
                                   <button type="submit" class="btn btn-primary">Use</button>
                               </form>
                           </div>

@@ -6,6 +6,7 @@ use App\Models\Avatar;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Session;
 
 class TransactionController extends Controller
 {
@@ -35,16 +36,17 @@ class TransactionController extends Controller
         $avatar = Avatar::findOrFail($avatar_id);
         $user = User::findOrFail(auth()->user()->id);
 
-        Transaction::create([
-            'avatar_id' => $avatar_id,
-            'user_id' => $user->id
-        ]);
 
         if ($user->coin < $avatar->price) {
             return redirect()->back()->with('error', 'Your Balance is not enough to buy!');
         } else {
             $user->coin -= $avatar->price;
             $user->save();
+
+            Transaction::create([
+                'avatar_id' => $avatar_id,
+                'user_id' => $user->id
+            ]);
 
             return redirect()->back()->with('success', 'Your transaction is success!');
         }
@@ -90,10 +92,23 @@ class TransactionController extends Controller
             ->join('avatars', 'avatars.id', 'transactions.avatar_id')
             ->where('transactions.user_id', auth()->user()->id)
             ->select([
+                'avatars.id as id',
                 'avatars.name as name',
                 'avatars.image as image'
             ])->get();
 
         return view('myavatar', compact('avatar'));
+    }
+
+    public function useavatar($avatar_id)
+    {
+        $user = User::findOrFail(auth()->user()->id);
+        $avatar = Avatar::findOrFail($avatar_id);
+
+        $user->image = $avatar->image;
+        $user->is_avatar = true;
+        $user->save();
+
+        return redirect()->route('profile');
     }
 }

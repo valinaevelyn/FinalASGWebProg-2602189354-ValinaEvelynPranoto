@@ -34,14 +34,16 @@
                     </div>
                 </div>
             </div>
-            
-
 
             <div class="col">
                 <div class="row d-flex justify-content-md-center align-items-center">
                     @forelse($user as $u)
                     <div class="card m-2 mt-5" style="width: 20rem;">
-                        <img src="{{ asset('/storage/profile_image/' . $u->image) }}" class="card-img-top" alt="..." style="object-fit: contain;">
+                      @if($u->is_avatar == true)
+                          <img src="{{ asset($u->image) }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
+                      @else
+                          <img src="{{ asset('/storage/profile_image/' . $u->image) }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
+                      @endif
                         <div class="card-body">
                           <h5 class="card-title">{{ $u->name }}</h5>
                           <p class="card-text">Hobbies: {{ $u->hobby }}</p>

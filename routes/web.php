@@ -30,4 +30,5 @@ Route::middleware('auth')->group(function () {
     Route::put('/topup', [ProfileController::class, 'topup'])->name('topup');
     Route::resource('/transaction', TransactionController::class);
     Route::get('/myavatar', [TransactionController::class, 'myavatar'])->name('myavatar');
+    Route::put('/myavatar/{avatar_id}', [TransactionController::class, 'useavatar'])->name('useavatar');
 });

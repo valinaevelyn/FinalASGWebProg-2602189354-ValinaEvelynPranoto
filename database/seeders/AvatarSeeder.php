@@ -16,7 +16,7 @@ class AvatarSeeder extends Seeder
         for ($i = 1; $i <= 9; $i++) {
             Avatar::create([
                 'name' => 'Avatar ' . $i,
-                'image' => 'avatar_pic/avatar-' . $i . '.jpg',
+                'image' => 'profile_image/avatar-' . $i . '.jpg',
                 'price' => mt_rand(50, 100000)
             ]);
         }
