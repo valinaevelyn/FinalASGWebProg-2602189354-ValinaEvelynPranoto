@@ -5,27 +5,33 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-          <li class="nav-item">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item me-2">
             <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
           </li>
           
           @guest
-          <li class="nav-item">
+          <li class="nav-item me-2">
             <a class="nav-link active" aria-current="page" href="{{ route('login') }}">Login</a>
           </li>
           @endguest
 
           @auth
-          <li class="nav-item">
+          <li class="nav-item me-2">
             <a class="nav-link" href="{{ route('friend.index') }}">Manage Friends</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('profile') }}">Profile</a>
+          <li class="nav-item dropdown me-2">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Profile
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{{ route('profile') }}">Profile</a></li>
+              <li><a class="dropdown-item" href="{{ route('logout') }}">Log Out</a></li>
+            </ul>
           </li>
 
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown me-2">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Avatar
             </a>
@@ -34,23 +40,21 @@
               <li><a class="dropdown-item" href="{{ route('myavatar') }}">Collectors Angels</a></li>
             </ul>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('logout') }}">Log Out</a>
-          </li>
           @endauth
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Language
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="{{ route('locale', 'id') }}">Bahasa Indonesia</a></li>
-              <li><a class="dropdown-item" href="{{ route('locale', 'en') }}">English</a></li>
-            </ul>
-          </li>
           
         </ul>
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown me-2">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Language
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{{ route('locale', 'id') }}">Bahasa Indonesia</a></li>
+                  <li><a class="dropdown-item" href="{{ route('locale', 'en') }}">English</a></li>
+              </ul>
+          </li>
+      </ul>
 
         
       </div>

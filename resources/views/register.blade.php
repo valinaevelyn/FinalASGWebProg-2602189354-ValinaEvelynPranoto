@@ -143,7 +143,7 @@
                         @enderror
                     </div>
                 
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <button type="submit" class="btn btn-warning">Register</button>
             </form>
 
             <div class="d-flex justify-content-center">

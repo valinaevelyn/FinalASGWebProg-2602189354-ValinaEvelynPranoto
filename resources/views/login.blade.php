@@ -30,7 +30,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-primary">Login</button>
+                            <button type="submit" class="btn btn-warning">Login</button>
                     </form>
 
                 <div class="d-flex justify-content-center">

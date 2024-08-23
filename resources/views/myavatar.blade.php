@@ -20,7 +20,7 @@
                                 @method('PUT')
                                 @csrf
                                   
-                                  <button type="submit" class="btn btn-primary">Use</button>
+                                  <button type="submit" class="btn btn-warning">Use</button>
                               </form>
                           </div>
                         </div>

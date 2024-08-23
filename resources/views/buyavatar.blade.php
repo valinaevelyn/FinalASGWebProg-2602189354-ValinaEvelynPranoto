@@ -3,11 +3,12 @@
 
 @section('content')
     <div class="container mt-5 d-flex justify-content-center align-items-center ">
-        <div class="col-md-9">
+      
+        <div class="col-md-10">
             @include('partials.error')
             @include('partials.success')
-            <h1 class="text-center">@lang('buyavatar.buyavatar_title')</h1>
-            <div class="col mt-5">
+            <h1 class="text-center mb-5">@lang('buyavatar.buyavatar_title')</h1>
+            <div class="mb-5">
                 <div class="row">
                     @forelse($avatar as $a)
                     <div class="card m-2" style="width: 18rem;">
@@ -16,14 +17,13 @@
                           <h5 class="card-title">{{ $a->name }}</h5>
                           <p class="card-text"><b>@lang('buyavatar.price'):</b> {{ $a->price }}</p>
 
-                          
                           <div class="col">
-                            <div class="row">
+                            <div class="row d-flex justify-content-center">
                               <div class="col-md-3">
                                 <form action="{{ route('transaction.store') }}" method="POST" enctype="multipart/form-data">
                                   @csrf
                                     <input type="hidden" id="avatar_id" name="avatar_id" value="{{ $a->id }}">
-                                    <button type="submit" class="btn btn-primary">@lang('buyavatar.buy')</button>
+                                    <button type="submit" class="btn btn-warning">@lang('buyavatar.buy')</button>
                                 </form>
                               </div>
     
@@ -31,7 +31,7 @@
                                 <form action="{{ route('sendavatar') }}" method="GET" enctype="multipart/form-data">
                                   @csrf
                                     <input type="hidden" id="avatar_id" name="avatar_id" value="{{ $a->id }}">
-                                    <button type="submit" class="btn btn-primary">@lang('buyavatar.send_gift')</button>
+                                    <button type="submit" class="btn btn-warning">@lang('buyavatar.send_gift')</button>
                                 </form>
                               </div>
                             </div>
