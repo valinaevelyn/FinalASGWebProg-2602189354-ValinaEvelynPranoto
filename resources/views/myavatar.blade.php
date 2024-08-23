@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('title', 'Avatar')
+@section('activeAvatar', 'active')
 
 @section('content')
     <div class="container mt-5 d-flex justify-content-center align-items-center ">

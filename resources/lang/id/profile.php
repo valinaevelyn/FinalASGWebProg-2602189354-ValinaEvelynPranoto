@@ -12,11 +12,11 @@ return [
     "your_visibility" => "Visibilitas Anda",
     "visibility_visible" => "TERLIHAT",
     "visibility_hidden" => "TERSEMBUNYI",
-    "hide_my_profile" => "Sembunyikan Profil Saya (-50)",
-    "show_my_profile" => "Perlihatkan Profil Saya (-5)",
+    "hide_my_profile" => "Sembunyikan Profil (-50)",
+    "show_my_profile" => "Perlihatkan Profil (-5)",
 
     "wallet_title" => "Dompet",
-    "mywallet" => "Dompet Saya",
+    "mywallet" => "Saldo",
     "topup" => "Isi Saldo +100",
     "friend_list" => "Daftar Teman",
     "no_data" => "Tidak ada data"

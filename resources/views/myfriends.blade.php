@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title', 'Manage Friends')
-@section('activeManageFriends', 'Manage Friends')
+@section('activeManageFriends', 'active')
 
 @section('content')
 <div class="container mt-4">

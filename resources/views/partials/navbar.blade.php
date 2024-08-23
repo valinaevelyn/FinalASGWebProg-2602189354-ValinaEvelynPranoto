@@ -7,7 +7,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item me-2">
-            <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
+            <a class="nav-link @yield('activeHome')" aria-current="page" href="{{ route('home') }}">Home</a>
           </li>
           
           @guest
@@ -18,11 +18,11 @@
 
           @auth
           <li class="nav-item me-2">
-            <a class="nav-link" href="{{ route('friend.index') }}">Manage Friends</a>
+            <a class="nav-link @yield('activeManageFriends')" href="{{ route('friend.index') }}">Manage Friends</a>
           </li>
 
           <li class="nav-item dropdown me-2">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle @yield('activeProfile')" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Profile
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -32,7 +32,7 @@
           </li>
 
           <li class="nav-item dropdown me-2">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle @yield('activeAvatar')" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Avatar
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
