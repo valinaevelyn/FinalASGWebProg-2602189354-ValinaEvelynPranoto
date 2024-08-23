@@ -12,7 +12,7 @@
           
           @guest
           <li class="nav-item me-2">
-            <a class="nav-link active" aria-current="page" href="{{ route('login') }}">Login</a>
+            <a class="nav-link " aria-current="page" href="{{ route('login') }}">Login</a>
           </li>
           @endguest
 
@@ -40,11 +40,12 @@
               <li><a class="dropdown-item" href="{{ route('myavatar') }}">Collectors Angels</a></li>
             </ul>
           </li>
-          @endauth
 
           <li class="nav-item me-2">
             <a class="nav-link @yield('activeTopup')" href="{{ route('show_topup') }}">Top Up</a>
           </li>
+          @endauth
+
           
         </ul>
 
