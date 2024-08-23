@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Friend;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class FriendController extends Controller
 {
@@ -13,6 +14,9 @@ class FriendController extends Controller
      */
     public function index()
     {
+        $loc = session()->get('locale');
+        App::setLocale($loc);
+
         $friend_requested = Friend::join('users', 'friends.receiver_id', '=', 'users.id')
             ->where('friends.sender_id', '=', auth()->user()->id)
             ->where('friends.status', 0)
@@ -55,6 +59,9 @@ class FriendController extends Controller
      */
     public function store(Request $request)
     {
+        $loc = session()->get('locale');
+        App::setLocale($loc);
+
         $receiver_id = $request->input('receiver_id');
         $friends = Friend::where([
             ['friends.receiver_id', $receiver_id],
@@ -162,6 +169,9 @@ class FriendController extends Controller
      */
     public function update(Request $request, Friend $friend)
     {
+        $loc = session()->get('locale');
+        App::setLocale($loc);
+
         $friend->status = 1;
         $friend->save();
 
@@ -173,6 +183,9 @@ class FriendController extends Controller
      */
     public function destroy(Friend $friend)
     {
+        $loc = session()->get('locale');
+        App::setLocale($loc);
+
         $friend->delete();
         return redirect()->back()->with('success', 'Friend has been successfully deleted!');
     }

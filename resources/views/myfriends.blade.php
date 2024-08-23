@@ -7,7 +7,7 @@
     <div class="col">
         @include('partials.success')
         <div class="col mb-3">
-            <h2>Sending Friend Requests</h2>
+            <h2>@lang('myfriends.sending_title')</h2>
             <div class="col">
                 <div class="row">
                     @forelse($friend_requested as $fr)
@@ -24,19 +24,19 @@
                           <form onclick="return confirm('are you sure?')" action="{{ route('friend.destroy', $fr->id) }}" method="POST" enctype="multipart/form-data">
                             @method('DELETE')
                             @csrf
-                              <button type="submit" class="btn btn-primary">Cancel Request</i></a>
+                              <button type="submit" class="btn btn-primary">@lang('myfriends.cancel_request')</i></a>
                           </form>
                         </div>
                       </div>  
                     @empty 
-                        <p>No Data.</p>  
+                        <p>@lang('myfriends.no_data')</p>  
                     @endforelse
                 </div>
             </div>
         </div>
 
         <div class="col mb-3">
-            <h2>Accepting Friend Requests</h2>
+            <h2>@lang('myfriends.accepting_title')</h2>
             <div class="col">
                 <div class="row">
                     @forelse($friend_accepted as $fa)
@@ -58,7 +58,7 @@
                         </div>
                       </div>  
                     @empty 
-                        <p>No Data.</p>  
+                        <p>@lang('myfriends.no_data')</p>  
                     @endforelse
                 </div>
             </div>

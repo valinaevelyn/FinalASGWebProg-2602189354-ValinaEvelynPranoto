@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Friend;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        $loc = session()->get('locale');
+        App::setLocale($loc);
 
         $user = User::all();
 
@@ -35,6 +38,8 @@ class HomeController extends Controller
 
     public function filter_gender($gender)
     {
+        $loc = session()->get('locale');
+        App::setLocale($loc);
         $user = User::where('users.gender', $gender)->select('*')->get();
 
         return view('home', compact('user'));
@@ -42,6 +47,9 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
+        $loc = session()->get('locale');
+        App::setLocale($loc);
+
         $user = User::where('users.hobby', 'LIKE', '%' . $request->input('input_search') . '%')->select('*')->get();
 
         return view('home', compact('user'));

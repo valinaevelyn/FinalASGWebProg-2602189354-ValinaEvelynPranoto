@@ -5,11 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Friend;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class ProfileController extends Controller
 {
     public function index()
     {
+        $loc = session()->get('locale');
+        App::setLocale($loc);
+
         $user = User::findOrFail(auth()->user()->id);
 
         $new_friend = Friend::where('status', 1)
@@ -36,6 +40,9 @@ class ProfileController extends Controller
 
     public function topup()
     {
+        $loc = session()->get('locale');
+        App::setLocale($loc);
+
         $user = User::findOrFail(auth()->user()->id);
         $user->coin += 100;
         $user->save();
@@ -45,6 +52,9 @@ class ProfileController extends Controller
 
     public function visibility(Request $request)
     {
+        $loc = session()->get('locale');
+        App::setLocale($loc);
+
         $visibility = $request->input('is_visible');
         $user = User::findOrFail(auth()->user()->id);
 

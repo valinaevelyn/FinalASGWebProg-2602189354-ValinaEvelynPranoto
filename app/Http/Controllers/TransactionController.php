@@ -6,6 +6,7 @@ use App\Models\Avatar;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Validator;
 use Session;
 
@@ -16,6 +17,9 @@ class TransactionController extends Controller
      */
     public function index()
     {
+        $loc = session()->get('locale');
+        App::setLocale($loc);
+
         $avatar = Avatar::all();
         return view('buyavatar', compact('avatar'));
     }
@@ -33,6 +37,9 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
+        $loc = session()->get('locale');
+        App::setLocale($loc);
+
         $avatar_id = $request->input('avatar_id');
         $avatar = Avatar::findOrFail($avatar_id);
         $user = User::findOrFail(auth()->user()->id);
@@ -94,6 +101,9 @@ class TransactionController extends Controller
 
     public function myavatar()
     {
+        $loc = session()->get('locale');
+        App::setLocale($loc);
+
         $avatar = Transaction::join('users', 'users.id', '=', 'transactions.user_id')
             ->join('avatars', 'avatars.id', 'transactions.avatar_id')
             ->where('transactions.user_id', auth()->user()->id)
@@ -108,6 +118,9 @@ class TransactionController extends Controller
 
     public function useavatar($avatar_id)
     {
+        $loc = session()->get('locale');
+        App::setLocale($loc);
+
         $user = User::findOrFail(auth()->user()->id);
         $avatar = Avatar::findOrFail($avatar_id);
 
@@ -120,6 +133,9 @@ class TransactionController extends Controller
 
     public function sendavatar(Request $request)
     {
+        $loc = session()->get('locale');
+        App::setLocale($loc);
+
         $avatar_id = $request->input('avatar_id');
         $avatar = Avatar::findOrFail($avatar_id);
 
@@ -131,7 +147,8 @@ class TransactionController extends Controller
     public function sendgift(Request $request)
     {
 
-        // dd($request);
+        $loc = session()->get('locale');
+        App::setLocale($loc);
 
         $rules = [
             'name' => 'required',

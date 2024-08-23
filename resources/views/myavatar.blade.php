@@ -6,7 +6,7 @@
         <div class="col-md-10">
             @include('partials.error')
             @include('partials.success')
-            <h1 class="text-center">My Avatar</h1>
+            <h1 class="text-center">@lang("collectors.myavatar")</h1>
             <div class="col mt-5">
                 <div class="row">
                     @forelse($avatar as $a)
@@ -26,7 +26,7 @@
                         </div>
                       </div>
                     @empty 
-                    <p>No Data</p>
+                    <p>@lang('collectors.no_data')</p>
                     @endforelse
                 </div>
             </div>

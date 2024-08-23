@@ -5,8 +5,9 @@
 @section('content')
 <div class="container">
     <div class="col">
-        <h1 class="text-center">My Profile</h1>
-
+        @include('partials.success')
+        @include('partials.error')
+        <h1 class="text-center">@lang('profile.profile_title')</h1>
         <div class="row mt-5 mb-5">
             <div class="col d-flex justify-content-center align-items-center">
                 @if($user->is_visible)
@@ -21,25 +22,28 @@
             </div>
             <div class="col d-flex align-items-center">
                 <div class="col">
-                    <h2>{{ $user->name }}</h2>
+                    <h2 class="text-primary">{{ $user->name }}</h2>
                     <div class="mt-3">
-                        <p>Hobby: {{ $user->hobby }}</p>
-                        <p>Gender: {{ $user->gender }}</p>
-                        <p>Phone Number: {{ $user->phone_number }}</p>
-                        <p>Instagram: {{ $user->instagram }}</p>
+
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><b>@lang('profile.profile_header.hobby')</b> {{ $user->hobby }}</li>
+                            <li class="list-group-item"><b>@lang('profile.profile_header.gender')</b> {{ $user->gender }}</li>
+                            <li class="list-group-item"><b>@lang('profile.profile_header.phone_number')</b> {{ $user->phone_number }}</li>
+                            <li class="list-group-item"><b>@lang('profile.profile_header.instagram')</b> {{ $user->instagram }}</li>
+                          </ul>
                     </div>
                     <hr>
-                    <div class="d-flex justify-content-center mt-3">
+                    <div class="d-flex justify-content-center mt-4">
                         <form action="{{ route('visibility') }}" method="POST">
                             @csrf
                             @if($user->is_visible)
-                                <p>Your Visibility : <b>VISIBLE</b></p>
+                                <p>@lang('profile.your_visibility') : <b>@lang('profile.visibility_visible')</b></p>
                                 <input type="hidden" name="is_visible" value="1">
-                                <button type="submit" class="btn btn-warning">Hide My Profile (-50)</button>
+                                <button type="submit" class="btn btn-warning">@lang('profile.hide_my_profile')</button>
                             @else
-                                <p>Your Visibility : <b>HIDDEN</b></p>
+                                <p>@lang('profile.your_visibility') : <b>@lang('profile.visibility_hidden')</b></p>
                                 <input type="hidden" name="is_visible" value="0">
-                                <button type="submit" class="btn btn-warning">Show My Profile (-5)</button>
+                                <button type="submit" class="btn btn-warning">@lang('profile.show_my_profile')</button>
                             @endif
                         </form>
                     </div>
@@ -48,19 +52,19 @@
         </div>
 
         <div class="col mt-3">
-            <h2>Wallet</h2>
-            <p class="fs-5 text-center">My Wallet: {{ $user->coin }}</p>
+            <h2>@lang('profile.wallet_title')</h2>
+            <p class="fs-5 text-center">@lang('profile.mywallet'): {{ $user->coin }}</p>
             <div class="d-flex justify-content-center">
                 <form action="{{ route('topup') }}" method="POST" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
-                    <button type="submit" class="btn btn-primary" style="width: 10rem">Top Up +100</button>
+                    <button type="submit" class="btn btn-primary" style="width: 10rem">@lang('profile.topup')</button>
                 </form>
             </div>
         </div>
 
         <div class="col mb-5 mt-5">
-            <h1 class="text-center">Friend List</h1>
+            <h1 class="text-center">@lang('profile.friend_list')</h1>
             <div class="col">
                 <div class="row d-flex justify-content-center align-items-center">
                     @forelse($new_friend as $nf)
@@ -72,12 +76,12 @@
                         @endif
                         <div class="card-body">
                           <h5 class="card-title">{{ $nf->name }}</h5>
-                          <p class="card-text">Hobbies: {{ $nf->hobby }}</p>
+                          <p class="card-text">@lang('profile.profile_header.hobby') {{ $nf->hobby }}</p>
                           <a href="https://binus.zoom.us/j/4974777108?omn=92953642376" class="btn btn-primary"><i class="fa-solid fa-video"></i></i></i></a>
                         </div>
                       </div>  
                     @empty 
-                        <p>No Data.</p>  
+                        <p>@lang('profile.no_data')</p>  
                     @endforelse
                 </div>
             </div>

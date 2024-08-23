@@ -3,10 +3,10 @@
 
 @section('content')
     <div class="container mt-5 d-flex justify-content-center align-items-center ">
-        <div class="col-md-10">
+        <div class="col-md-9">
             @include('partials.error')
             @include('partials.success')
-            <h1 class="text-center">Buy Avatar</h1>
+            <h1 class="text-center">@lang('buyavatar.buyavatar_title')</h1>
             <div class="col mt-5">
                 <div class="row">
                     @forelse($avatar as $a)
@@ -14,7 +14,7 @@
                         <img src="{{ asset($a->image) }}" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">{{ $a->name }}</h5>
-                          <p class="card-text"><b>Price:</b> {{ $a->price }}</p>
+                          <p class="card-text"><b>@lang('buyavatar.price'):</b> {{ $a->price }}</p>
 
                           
                           <div class="col">
@@ -23,7 +23,7 @@
                                 <form action="{{ route('transaction.store') }}" method="POST" enctype="multipart/form-data">
                                   @csrf
                                     <input type="hidden" id="avatar_id" name="avatar_id" value="{{ $a->id }}">
-                                    <button type="submit" class="btn btn-primary">Buy</button>
+                                    <button type="submit" class="btn btn-primary">@lang('buyavatar.buy')</button>
                                 </form>
                               </div>
     
@@ -31,7 +31,7 @@
                                 <form action="{{ route('sendavatar') }}" method="GET" enctype="multipart/form-data">
                                   @csrf
                                     <input type="hidden" id="avatar_id" name="avatar_id" value="{{ $a->id }}">
-                                    <button type="submit" class="btn btn-primary">Send as Gift</button>
+                                    <button type="submit" class="btn btn-primary">@lang('buyavatar.send_gift')</button>
                                 </form>
                               </div>
                             </div>
@@ -40,7 +40,7 @@
                         </div>
                       </div>
                     @empty 
-                    <p>No Data</p>
+                    <p>@lang('buyavatar.no_data')</p>
                     @endforelse
                 </div>
             </div>

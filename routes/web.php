@@ -35,3 +35,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/sendavatar', [TransactionController::class, 'sendavatar'])->name('sendavatar');
     Route::post('/sendavatar/sendgift', [TransactionController::class, 'sendgift'])->name('sendgift');
 });
+
+Route::get('/locale/{loc}', function ($loc) {
+    Session::put('locale', $loc);
+    return redirect()->back();
+})->name('locale');

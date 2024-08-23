@@ -2,7 +2,7 @@
 
 @section('title', 'Register')
 @section('content')
-    <div class="container mt-5 d-flex justify-content-center align-items-center">
+    <div class="container mt-5 d-flex justify-content-center align-items-center mb-5">
         <div class="col-md-6 mt-5">
             <h1 class="text-center mb-5">Register Form</h1>
             <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">

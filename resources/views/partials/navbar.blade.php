@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-warning">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">CasualFriends</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,10 +9,12 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
           </li>
-
+          
+          @guest
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{ route('login') }}">Login</a>
           </li>
+          @endguest
 
           @auth
           <li class="nav-item">
@@ -33,21 +35,24 @@
             </ul>
           </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('logout') }}">Log Out</a>
+          </li>
+          @endauth
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Language
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Bahasa Indonesia</a></li>
-              <li><a class="dropdown-item" href="#">English</a></li>
+              <li><a class="dropdown-item" href="{{ route('locale', 'id') }}">Bahasa Indonesia</a></li>
+              <li><a class="dropdown-item" href="{{ route('locale', 'en') }}">English</a></li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('logout') }}">Log Out</a>
-          </li>
-          @endauth
           
         </ul>
+
+        
       </div>
     </div>
   </nav>
