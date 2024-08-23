@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('title', 'Manage Friends')
+@section('activeManageFriends', 'Manage Friends')
 
 @section('content')
 <div class="container mt-4 d-flex justify-content-center">
@@ -12,9 +13,9 @@
                     @forelse($friend_requested as $fr)
                     <div class="card m-3" style="width: 18rem;">
                       @if($fr->is_avatar == true)
-                      <img src="{{ asset($fr->image) }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
+                          <img src="{{ asset($fr->image) }}" class="" style="" alt="...">
                       @else
-                      <img src="{{ asset('/storage/profile_image/' . $fr->image) }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
+                          <img src="{{ asset('/storage/profile_image/' . $fr->image) }}" class="" style="" alt="...">
                       @endif
                         <div class="card-body">
                           <h5 class="card-title">{{ $fr->name }}</h5>
@@ -41,7 +42,7 @@
                     @forelse($friend_accepted as $fa)
                     <div class="card m-3" style="width: 18rem;">
                       @if($fa->is_avatar == true)
-                      <img src="{{ asset($fa->image) }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
+                      <img src="{{ asset($fa->image) }}" class="" style="" alt="...">
                       @else
                       <img src="{{ asset('/storage/profile_image/' . $fa->image) }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
                       @endif

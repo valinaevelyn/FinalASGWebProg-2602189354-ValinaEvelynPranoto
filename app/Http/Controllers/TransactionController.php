@@ -6,6 +6,7 @@ use App\Models\Avatar;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Session;
 
 class TransactionController extends Controller
@@ -116,4 +117,59 @@ class TransactionController extends Controller
 
         return redirect()->route('profile');
     }
+
+    public function sendavatar(Request $request)
+    {
+        $avatar_id = $request->input('avatar_id');
+        $avatar = Avatar::findOrFail($avatar_id);
+
+        $user = User::where('id', '!=', auth()->user()->id)
+            ->get();
+        return view('sendavatar', compact('user', 'avatar'));
+    }
+
+    public function sendgift(Request $request)
+    {
+
+        // dd($request);
+
+        $rules = [
+            'name' => 'required',
+        ];
+
+        $message = [
+            'required' => ':attribute must be choosen'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $message);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withInput()->withErrors($validator);
+        } else {
+            $avatar_id = $request->input('avatar_id');
+            $receiver_id = $request->input('name');
+            $sender = User::findOrFail(auth()->user()->id);
+
+            $avatar = Avatar::findOrFail($avatar_id);
+
+            $transaction_check = Transaction::where('transactions.avatar_id', $avatar_id)
+                ->where('transactions.user_id', $receiver_id)->exists();
+
+            if ($transaction_check) {
+                return redirect()->back()->with('error', 'User has already have the avatar');
+            } else {
+                $sender->coin -= $avatar->price;
+                $sender->save();
+
+                Transaction::create([
+                    'user_id' => $receiver_id,
+                    'avatar_id' => $avatar_id
+                ]);
+
+                return redirect()->route('transaction.index')->with('success', 'Avatar has been send as gift!');
+            }
+        }
+    }
+
 }

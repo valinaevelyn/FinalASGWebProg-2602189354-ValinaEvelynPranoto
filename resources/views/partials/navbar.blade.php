@@ -9,6 +9,12 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ route('login') }}">Login</a>
+          </li>
+
+          @auth
           <li class="nav-item">
             <a class="nav-link" href="{{ route('friend.index') }}">Manage Friends</a>
           </li>
@@ -23,7 +29,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="{{ route('transaction.index') }}">Buy Avatar</a></li>
-              <li><a class="dropdown-item" href="{{ route('myavatar') }}">My Avatar</a></li>
+              <li><a class="dropdown-item" href="{{ route('myavatar') }}">Collectors Angels</a></li>
             </ul>
           </li>
 
@@ -39,6 +45,7 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}">Log Out</a>
           </li>
+          @endauth
           
         </ul>
       </div>

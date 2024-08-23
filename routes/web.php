@@ -16,11 +16,11 @@ Route::get('/register/pay', [RegisterController::class, 'pay'])->name('pay');
 Route::post('/register/pay', [RegisterController::class, 'payment'])->name('payment');
 Route::put('/register/pay/overpaidyes', [RegisterController::class, 'overpaidyes'])->name('overpaidyes');
 
-Route::get('/', [LoginController::class, 'login'])->name('login');
-Route::post('/', [LoginController::class, 'authenticate'])->name('authenticate');
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home/filter/{gender}', [HomeController::class, 'filter_gender'])->name('filter_gender');
 Route::post('/home/search', [HomeController::class, 'search'])->name('search');
 
@@ -32,4 +32,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('/transaction', TransactionController::class);
     Route::get('/myavatar', [TransactionController::class, 'myavatar'])->name('myavatar');
     Route::put('/myavatar/{avatar_id}', [TransactionController::class, 'useavatar'])->name('useavatar');
+    Route::get('/sendavatar', [TransactionController::class, 'sendavatar'])->name('sendavatar');
+    Route::post('/sendavatar/sendgift', [TransactionController::class, 'sendgift'])->name('sendgift');
 });

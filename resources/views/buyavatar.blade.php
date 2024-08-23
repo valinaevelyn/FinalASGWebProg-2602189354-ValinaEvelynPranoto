@@ -16,11 +16,27 @@
                           <h5 class="card-title">{{ $a->name }}</h5>
                           <p class="card-text"><b>Price:</b> {{ $a->price }}</p>
 
-                          <form action="{{ route('transaction.store') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                              <input type="hidden" id="avatar_id" name="avatar_id" value="{{ $a->id }}">
-                              <button type="submit" class="btn btn-primary">Buy</button>
-                          </form>
+                          
+                          <div class="col">
+                            <div class="row">
+                              <div class="col-md-3">
+                                <form action="{{ route('transaction.store') }}" method="POST" enctype="multipart/form-data">
+                                  @csrf
+                                    <input type="hidden" id="avatar_id" name="avatar_id" value="{{ $a->id }}">
+                                    <button type="submit" class="btn btn-primary">Buy</button>
+                                </form>
+                              </div>
+    
+                              <div class="col-md-7">
+                                <form action="{{ route('sendavatar') }}" method="GET" enctype="multipart/form-data">
+                                  @csrf
+                                    <input type="hidden" id="avatar_id" name="avatar_id" value="{{ $a->id }}">
+                                    <button type="submit" class="btn btn-primary">Send as Gift</button>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+
                         </div>
                       </div>
                     @empty 

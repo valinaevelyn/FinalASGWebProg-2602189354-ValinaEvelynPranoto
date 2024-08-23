@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('title', 'Profile')
+@section('activeProfile', 'active')
 @section('content')
 <div class="container">
     <div class="col">
@@ -64,7 +65,11 @@
                 <div class="row d-flex justify-content-center align-items-center">
                     @forelse($new_friend as $nf)
                     <div class="card m-3" style="width: 20rem;">
-                        <img src="{{ asset('/storage/profile_image/' . $nf->image) }}" class="card-img-top" alt="..." style="object-fit: contain">
+                        @if($nf->is_avatar == true)
+                          <img src="{{ asset($nf->image) }}" class="" style="" alt="...">
+                        @else
+                          <img src="{{ asset('/storage/profile_image/' . $nf->image) }}" class="" style="" alt="...">
+                        @endif
                         <div class="card-body">
                           <h5 class="card-title">{{ $nf->name }}</h5>
                           <p class="card-text">Hobbies: {{ $nf->hobby }}</p>

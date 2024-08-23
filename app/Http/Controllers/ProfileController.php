@@ -26,7 +26,8 @@ class ProfileController extends Controller
                 'friends.id as id',
                 'users.name as name',
                 'users.image as image',
-                'users.hobby as hobby'
+                'users.hobby as hobby',
+                'users.is_avatar as is_avatar'
             ])
             ->get();
 

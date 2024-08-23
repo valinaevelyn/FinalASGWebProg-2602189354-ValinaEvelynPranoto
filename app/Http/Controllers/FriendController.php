@@ -22,7 +22,8 @@ class FriendController extends Controller
                 'friends.receiver_id as receiver_id',
                 'users.name as name',
                 'users.image as image',
-                'users.hobby as hobby'
+                'users.hobby as hobby',
+                'users.is_avatar as is_avatar'
             ])->get();
 
         $friend_accepted = Friend::join('users', 'friends.sender_id', '=', 'users.id')
@@ -34,7 +35,8 @@ class FriendController extends Controller
                 'friends.receiver_id as receiver_id',
                 'users.name as name',
                 'users.image as image',
-                'users.hobby as hobby'
+                'users.hobby as hobby',
+                'users.is_avatar as is_avatar'
             ])->get();
 
         return view('myfriends', compact('friend_requested', 'friend_accepted'));
@@ -93,7 +95,8 @@ class FriendController extends Controller
                         'friends.receiver_id as receiver_id',
                         'users.name as name',
                         'users.image as image',
-                        'users.hobby as hobby'
+                        'users.hobby as hobby',
+                        'users.is_avatar as is_avatar'
                     ])->exists();
 
                 if ($friend_requested) {
@@ -110,7 +113,8 @@ class FriendController extends Controller
                         'friends.receiver_id as receiver_id',
                         'users.name as name',
                         'users.image as image',
-                        'users.hobby as hobby'
+                        'users.hobby as hobby',
+                        'users.is_avatar as is_avatar'
                     ])->exists();
 
                 if ($friend_accepted) {
@@ -124,7 +128,8 @@ class FriendController extends Controller
                             'friends.status as status',
                             'users.name as name',
                             'users.image as image',
-                            'users.hobby as hobby'
+                            'users.hobby as hobby',
+                            'users.is_avatar as is_avatar'
                         ])->update(['status' => 1]);
 
                     return redirect()->route('friend.index')->with('success', 'Friend Request has been accepted!');

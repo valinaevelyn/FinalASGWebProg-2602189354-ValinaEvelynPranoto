@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('title', 'Home')
+@section('activeHome', 'active')
 
 @section('content')
     <div class="container mt-4 d-flex justify-content-center">
@@ -40,9 +41,9 @@
                     @forelse($user as $u)
                     <div class="card m-2 mt-5" style="width: 20rem;">
                       @if($u->is_avatar == true)
-                          <img src="{{ asset($u->image) }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
+                          <img src="{{ asset($u->image) }}" class="" style="" alt="...">
                       @else
-                          <img src="{{ asset('/storage/profile_image/' . $u->image) }}" class="rounded-circle" style="width: 300px; height:300px; object-fit:cover" alt="...">
+                          <img src="{{ asset('/storage/profile_image/' . $u->image) }}" class="" style="" alt="...">
                       @endif
                         <div class="card-body">
                           <h5 class="card-title">{{ $u->name }}</h5>
