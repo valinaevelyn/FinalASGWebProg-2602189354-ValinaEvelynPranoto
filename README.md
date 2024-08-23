@@ -1,8 +1,8 @@
 ## Casual Friends - Final Assignment Web Programming
 
-**Nama:** Valina Evelyn Pranoto
-**Kelas:** PPTI 14
-**NIM:** 2602189354
+**Nama:** Valina Evelyn Pranoto <br />
+**Kelas:** PPTI 14 <br />
+**NIM:** 2602189354 <br />
 **Theme:** Casual Friends (Even)
 
 *How to run after download the zip:*
