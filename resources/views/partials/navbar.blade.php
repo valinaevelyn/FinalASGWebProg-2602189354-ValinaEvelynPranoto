@@ -41,16 +41,20 @@
             </ul>
           </li>
           @endauth
+
+          <li class="nav-item me-2">
+            <a class="nav-link @yield('activeTopup')" href="{{ route('show_topup') }}">Top Up</a>
+          </li>
           
         </ul>
 
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown me-2">
+        <ul class="navbar-nav ms-auto mb-2 me-5 mb-lg-0">
+          <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Language
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{{ route('locale', 'id') }}">Bahasa Indonesia</a></li>
+                  <li><a class="dropdown-item" href="{{ route('locale', 'id') }}">Indonesia</a></li>
                   <li><a class="dropdown-item" href="{{ route('locale', 'en') }}">English</a></li>
               </ul>
           </li>

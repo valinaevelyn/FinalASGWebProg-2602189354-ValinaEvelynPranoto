@@ -28,7 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/friend', FriendController::class);
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::post('/profile/visibility', [ProfileController::class, 'visibility'])->name('visibility');
-    Route::put('/topup', [ProfileController::class, 'topup'])->name('topup');
+    Route::get('/topup', [ProfileController::class, 'show_topup'])->name('show_topup');
+    Route::put('/topup/save', [ProfileController::class, 'topup'])->name('topup');
     Route::resource('/transaction', TransactionController::class);
     Route::get('/myavatar', [TransactionController::class, 'myavatar'])->name('myavatar');
     Route::put('/myavatar/{avatar_id}', [TransactionController::class, 'useavatar'])->name('useavatar');

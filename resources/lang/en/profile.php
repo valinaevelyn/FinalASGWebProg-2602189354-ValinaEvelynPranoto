@@ -19,5 +19,6 @@ return [
     "mywallet" => "My Wallet",
     "topup" => "Top Up +100",
     "friend_list" => "Friend List",
-    "no_data" => "No Data"
+    "no_data" => "No Data",
+    "remove_friend" => "Remove Friend",
 ];

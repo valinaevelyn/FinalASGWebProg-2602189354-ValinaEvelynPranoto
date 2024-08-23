@@ -36,6 +36,17 @@ class ProfileController extends Controller
             ->get();
 
         return view('profile', compact('user', 'new_friend'));
+
+    }
+
+    public function show_topup()
+    {
+        $loc = session()->get('locale');
+        App::setLocale($loc);
+
+        $user = User::findOrFail(auth()->user()->id);
+
+        return view('topup', compact('user'));
     }
 
     public function topup()

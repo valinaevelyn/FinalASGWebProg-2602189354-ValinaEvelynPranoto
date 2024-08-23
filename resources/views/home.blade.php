@@ -23,7 +23,7 @@
 
             <div class="col mt-3">
                 <div class="row d-flex justify-content-center align-items-center">
-                    <div class="col-md-2" style="">
+                    <div class="col-md-3" style="">
                         <div class="dropdown m-0">
                             <button class="btn btn-warning dropdown-toggle filter" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100%">
                               @lang('home.filter')

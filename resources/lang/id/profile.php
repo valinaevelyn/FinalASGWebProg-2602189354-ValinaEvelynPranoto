@@ -19,5 +19,6 @@ return [
     "mywallet" => "Saldo",
     "topup" => "Isi Saldo +100",
     "friend_list" => "Daftar Teman",
-    "no_data" => "Tidak ada data"
+    "no_data" => "Tidak ada data",
+    "remove_friend" => "Hapus Teman",
 ];

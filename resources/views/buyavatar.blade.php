@@ -10,7 +10,7 @@
             @include('partials.success')
             <h1 class="text-center mb-5">@lang('buyavatar.buyavatar_title')</h1>
             <div class="mb-5">
-                <div class="row">
+                <div class="row justify-content-center">
                     @forelse($avatar as $a)
                     <div class="card m-2" style="width: 18rem;">
                         <img src="{{ asset($a->image) }}" class="card-img-top" alt="...">

@@ -40,7 +40,10 @@ class HomeController extends Controller
     {
         $loc = session()->get('locale');
         App::setLocale($loc);
-        $user = User::where('users.gender', $gender)->select('*')->get();
+        $user = User::where('users.gender', $gender)
+            ->where('id', '!=', auth()->user()->id)
+            ->where('users.is_visible', 1)
+            ->select('*')->get();
 
         return view('home', compact('user'));
     }
@@ -50,7 +53,10 @@ class HomeController extends Controller
         $loc = session()->get('locale');
         App::setLocale($loc);
 
-        $user = User::where('users.hobby', 'LIKE', '%' . $request->input('input_search') . '%')->select('*')->get();
+        $user = User::where('users.hobby', 'LIKE', '%' . $request->input('input_search') . '%')
+            ->where('id', '!=', auth()->user()->id)
+            ->where('users.is_visible', 1)
+            ->select('*')->get();
 
         return view('home', compact('user'));
     }

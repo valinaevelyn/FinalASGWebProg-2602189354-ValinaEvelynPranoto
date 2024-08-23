@@ -12,6 +12,7 @@
 
 <div class="container">
     <div class="col">
+        <br>
         @include('partials.success')
         @include('partials.error')
         <br>
@@ -91,11 +92,29 @@
                         @else
                           <img src="{{ asset('/storage/profile_image/' . $nf->image) }}" class="" style="width: 100%; height: 200px; object-fit: cover; object-position: center" alt="...">
                         @endif
-                        <div class="card-body">
-                          <h5 class="card-title">{{ $nf->name }}</h5>
-                          <p class="card-text">@lang('profile.profile_header.hobby') {{ $nf->hobby }}</p>
-                          <a href="https://binus.zoom.us/j/4974777108?omn=92953642376" class="btn btn-warning"><i class="fa-solid fa-video"></i></i></i></a>
-                        </div>
+
+                        
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $nf->name }}</h5>
+                                <p class="card-text">@lang('profile.profile_header.hobby') {{ $nf->hobby }}</p>
+                                <div class="row">
+                                    <div class="col-md-1 me-4">
+                                        <a href="https://binus.zoom.us/j/4974777108?omn=92953642376" class="btn btn-warning"><i class="fa-solid fa-video"></i></i></i></a>
+                                    </div>
+    
+                                    <div class="col-md-9">
+                                        <form onclick="return confirm('are you sure?')" action="{{ route('friend.destroy', $nf->id) }}" method="POST" enctype="multipart/form-data">
+                                            @method('DELETE')
+                                            @csrf
+                                              <button type="submit" class="btn btn-warning">@lang('profile.remove_friend')</i></a>
+                                          </form>
+                                      </div>
+                                </div>
+                            </div>
+      
+                              
+                        
+                        
                       </div>  
                     @empty 
                         <p>@lang('profile.no_data')</p>  
