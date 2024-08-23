@@ -49,9 +49,9 @@
             <div class="col">
                 <div class="row d-flex justify-content-md-center align-items-center">
                     @forelse($user as $u)
-                    <div class="card m-2 mt-5" style="width: 20rem; height: 400px; overflow: hidden;">
+                    <div class="card m-2 mt-5" style="width: 20rem; height: 400px; overflow: hidden; padding-right: 0 !important; padding-left: 0 !important">
                       @if($u->is_avatar == true)
-                          <img src="{{ asset($u->image) }}" class="" style="width: 100%; height: 200px; object-fit: contain; object-position: cover" alt="...">
+                          <img src="{{ asset($u->image) }}" class="" style="width: 100%; height: 200px; object-fit: contain; object-position: cover; " alt="...">
                       @else
                           <img src="{{ asset('/storage/profile_image/' . $u->image) }}" class="" style="width: 100%; height: 200px; object-fit: cover; object-position: center" alt="...">
                       @endif

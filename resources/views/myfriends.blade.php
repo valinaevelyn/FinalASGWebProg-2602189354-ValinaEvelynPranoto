@@ -11,13 +11,13 @@
             <div class="col-md-10">
                 <div class="row">
                     @forelse($friend_requested as $fr)
-                      <div class="card m-3" style="height: ">
-                        <div class="row g-0">
+                      <div class="card m-3" style="padding-right: 0 !important; padding-left: 0 !important">
+                        <div class="row g-0 h-100" style="">
                           <div class="col-md-4">
                             @if($fr->is_avatar == true)
-                              <img src="{{ asset($fr->image) }}" class="img-fluid rounded-start" style="" alt="...">
+                              <img src="{{ asset($fr->image) }}" class="img-fluid rounded-start" style="width: 100%; height: 100%; object-fit: cover;" alt="...">
                             @else
-                              <img src="{{ asset('/storage/profile_image/' . $fr->image) }}" class="img-fluid rounded-start" style="" alt="...">
+                              <img src="{{ asset('/storage/profile_image/' . $fr->image) }}" class="img-fluid rounded-start" style="width: 100%; height: 100%; object-fit: cover;" alt="...">
                             @endif
                           </div>
                           <div class="col-md-8">
@@ -42,18 +42,18 @@
             </div>
         </div>
 
-        <div class="col-md-6 mb-5 mt-5">
+        <div class="col-md-6 mb-3 mt-5">
             <h3 class="text-center mb-4">@lang('myfriends.accepting_title')</h3>
-            <div class="col">
+            <div class="col-md-11">
                 <div class="row">
                     @forelse($friend_accepted as $fa)
-                    <div class="card m-3" style="">
-                      <div class="row g-0">
+                    <div class="card m-3" style="padding-right: 0 !important; padding-left: 0 !important">
+                      <div class="row g-0 h-100">
                         <div class="col-md-4">
                           @if($fa->is_avatar == true)
-                            <img src="{{ asset($fa->image) }}" class="img-fluid rounded-start" style="" alt="...">
+                            <img src="{{ asset($fa->image) }}" class="img-fluid rounded-start" style="width: 100%; height: 100%; object-fit: cover;" alt="...">
                           @else
-                            <img src="{{ asset('/storage/profile_image/' . $fa->image) }}" class="img-fluid rounded-start" style="" alt="...">
+                            <img src="{{ asset('/storage/profile_image/' . $fa->image) }}" class="img-fluid rounded-start" style="width: 100%; height: 100%; object-fit: cover;" alt="...">
                           @endif
                         </div>
                         <div class="col-md-8">

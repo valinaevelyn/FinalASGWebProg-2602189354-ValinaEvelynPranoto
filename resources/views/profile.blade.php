@@ -85,11 +85,11 @@
             <div class="col">
                 <div class="row d-flex justify-content-center align-items-center">
                     @forelse($new_friend as $nf)
-                    <div class="card m-3" style="width: 20rem;">
+                    <div class="card m-3" style="width: 20rem; height: 400px; overflow: hidden; padding-right: 0 !important; padding-left: 0 !important">
                         @if($nf->is_avatar == true)
-                          <img src="{{ asset($nf->image) }}" class="" style="" alt="...">
+                          <img src="{{ asset($nf->image) }}" class="" style="width: 100%; height: 200px; object-fit: contain; object-position: cover" alt="...">
                         @else
-                          <img src="{{ asset('/storage/profile_image/' . $nf->image) }}" class="" style="" alt="...">
+                          <img src="{{ asset('/storage/profile_image/' . $nf->image) }}" class="" style="width: 100%; height: 200px; object-fit: cover; object-position: center" alt="...">
                         @endif
                         <div class="card-body">
                           <h5 class="card-title">{{ $nf->name }}</h5>
