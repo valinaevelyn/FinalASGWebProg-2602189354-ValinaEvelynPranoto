@@ -28,12 +28,19 @@
     @elseif($message = Session::get('overpaid'))
         <p><b>{{ $message }}</b></p>
         
-        <form action="{{ route('overpaidyes') }}" method="POST">
-            @method('PUT')
-            @csrf
-            <button type="submit" class="btn btn-warning btn-sm">Yes</button>
-        </form>
-        <a href="{{ route('pay') }}" class="btn btn-danger btn-sm">No</a>
+        <div class="row">
+            <div class="col-md-1">
+                <form action="{{ route('overpaidyes') }}" method="POST">
+                    @method('PUT')
+                    @csrf
+                    <button type="submit" class="btn btn-warning btn-sm">Yes</button>
+                </form>
+            </div>
+
+            <div class="col-md-1">
+                <a href="{{ route('pay') }}" class="btn btn-danger btn-sm">No</a>
+            </div>
+        </div>
     @endif
 </div>
 
